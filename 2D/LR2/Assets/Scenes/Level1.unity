@@ -131,6 +131,7 @@ GameObject:
   - component: {fileID: 106229980}
   - component: {fileID: 106229979}
   - component: {fileID: 106229981}
+  - component: {fileID: 106229982}
   m_Layer: 0
   m_Name: Tilemap_Ground
   m_TagString: Untagged
@@ -2731,6 +2732,38 @@ TilemapCollider2D:
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0
   m_UseDelaunayMesh: 0
+--- !u!114 &106229982
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 106229977}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e4d6c78b1cd6db40869f65bee90579e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tiles:
+  - {fileID: 11400000, guid: 06444a45086ccb144ae1fb7ea8ee0d3a, type: 2}
+  - {fileID: 11400000, guid: b9e1192dcf0ff334fbc2de7555f081ff, type: 2}
+  - {fileID: 11400000, guid: 310063e72e2818d40a07fe13f78ee473, type: 2}
+  - {fileID: 11400000, guid: 0ea4ce1ec19341446994b804890a399c, type: 2}
+  - {fileID: 11400000, guid: 1ba2edec75c0f034aaa0adfc851c66d9, type: 2}
+  - {fileID: 11400000, guid: ae6d23443d81d6841be081794209c4c5, type: 2}
+  - {fileID: 11400000, guid: 4e9314d497a2f8542a2d47a811220daf, type: 2}
+  - {fileID: 11400000, guid: b3655ec366d7fed4788f1ea7eefd5d3b, type: 2}
+  - {fileID: 11400000, guid: 622ddd3bb6fad974fbc82086628a1516, type: 2}
+  - {fileID: 11400000, guid: 7f9f775db1bf7c444bc86dd90da03a8f, type: 2}
+  - {fileID: 11400000, guid: 19914ed3e97faf24b8b348d2f126a9ea, type: 2}
+  - {fileID: 11400000, guid: 488f1f9732dfbaa4cb25b11fa8720eb0, type: 2}
+  - {fileID: 11400000, guid: cfeeb248f898c5945803b7949b45d0d9, type: 2}
+  - {fileID: 11400000, guid: 6b4817b04f73c084aa5ba10b21ba19d0, type: 2}
+  - {fileID: 11400000, guid: 66f1553bca688f04fa97b6bac9b908d6, type: 2}
+  rightEdge: 46
+  leftEdge: -14
+  lookAhead: 30
+  seed: 2026
 --- !u!1 &747068924
 GameObject:
   m_ObjectHideFlags: 0
@@ -2742,6 +2775,7 @@ GameObject:
   - component: {fileID: 747068925}
   - component: {fileID: 747068927}
   - component: {fileID: 747068926}
+  - component: {fileID: 747068928}
   m_Layer: 0
   m_Name: Tilemap_Middleground
   m_TagString: Untagged
@@ -15490,6 +15524,20 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!114 &747068928
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 747068924}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da8e56942e87d6640936bdcbcc3b8259, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  period: 24
+  parallax: 0.25
 --- !u!1 &837746800
 GameObject:
   m_ObjectHideFlags: 0
@@ -15896,6 +15944,7 @@ GameObject:
   - component: {fileID: 1548915152}
   - component: {fileID: 1548915154}
   - component: {fileID: 1548915153}
+  - component: {fileID: 1548915155}
   m_Layer: 0
   m_Name: Tilemap_Background
   m_TagString: Untagged
@@ -32918,6 +32967,20 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!114 &1548915155
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1548915151}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da8e56942e87d6640936bdcbcc3b8259, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  period: 12
+  parallax: 0.5
 --- !u!1 &2049861114
 GameObject:
   m_ObjectHideFlags: 0
