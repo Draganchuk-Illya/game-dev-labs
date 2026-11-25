@@ -25,6 +25,8 @@ public class RaceManager : MonoBehaviour
 
     void Start()
     {
+        // кадри синхронізуються з монітором, щоб картинка не рвалась
+        QualitySettings.vSyncCount = 1;
         foreach (var car in cars) car.Setup(circuit.Waypoints, totalLaps);
         player = cars.First(c => c.isPlayer);
         SetDrivers(false);
@@ -32,12 +34,12 @@ public class RaceManager : MonoBehaviour
         StartCoroutine(Countdown());
     }
 
-    // Вмикає або вимикає керування: гравця (CarUserControl) і суперників (CarAIControl)
+    // Вмикає або вимикає керування: гравця (PlayerDrive) і суперників (CarAIControl)
     void SetDrivers(bool on)
     {
         foreach (var car in cars)
         {
-            var user = car.GetComponent<CarUserControl>();
+            var user = car.GetComponent<PlayerDrive>();
             if (user != null) user.enabled = on;
             var ai = car.GetComponent<CarAIControl>();
             if (ai != null) ai.enabled = on;
@@ -104,7 +106,7 @@ public class RaceManager : MonoBehaviour
 
     void PlayerFinished()
     {
-        var user = player.GetComponent<CarUserControl>();
+        var user = player.GetComponent<PlayerDrive>();
         if (user != null) user.enabled = false;
         StartCoroutine(BrakePlayer());
         centerText.text = string.Format("Фініш!\nМісце: {0} з {1}\nЧас: {2}\nR - почати заново",

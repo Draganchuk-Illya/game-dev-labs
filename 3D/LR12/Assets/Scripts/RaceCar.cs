@@ -48,8 +48,16 @@ public class RaceCar : MonoBehaviour
     public void CheckStuck(float deltaTime)
     {
         if (Finished || waypoints == null) return;
+        if (isPlayer)
+        {
+            // гравця саму по собі не переношу: він може просто стояти. Тільки коли тисне газ і не їде, або за клавішею Backspace
+            bool pushing = Mathf.Abs(Input.GetAxisRaw("Vertical")) > 0.1f;
+            stuckTime = pushing && body.linearVelocity.magnitude < 1.5f ? stuckTime + deltaTime : 0f;
+            if (stuckTime > 4f || Input.GetKeyDown(KeyCode.Backspace)) Respawn();
+            return;
+        }
         stuckTime = body.linearVelocity.magnitude < 1.5f ? stuckTime + deltaTime : 0f;
-        if (stuckTime > 3f || (isPlayer && Input.GetKeyDown(KeyCode.Backspace))) Respawn();
+        if (stuckTime > 3f) Respawn();
     }
 
     public void Respawn()

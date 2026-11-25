@@ -166,6 +166,10 @@ public static class RaceBuilder
         var so = new SerializedObject(go.GetComponent<CarController>());
         so.FindProperty("m_Topspeed").floatValue = topSpeed;
         so.ApplyModifiedPropertiesWithoutUndo();
+        // інтерполяція згладжує рух між кроками фізики, без неї машина і камера смикаються
+        var rb = go.GetComponent<Rigidbody>();
+        rb.interpolation = RigidbodyInterpolation.Interpolate;
+        rb.collisionDetectionMode = CollisionDetectionMode.Continuous;
         return go;
     }
 
@@ -337,6 +341,13 @@ public static class RaceBuilder
             carObjects.Add(ai);
         }
         var playerCar = Car("Car", "PlayerCar", grid(17f, -3f), startRot, new Color(0.15f, 0.7f, 0.25f), 125f, bodySource);
+        // стандартне керування замінюю своїм плавним, машині гравця додаю стійкості на дорозі
+        UnityEngine.Object.DestroyImmediate(playerCar.GetComponent<CarUserControl>());
+        playerCar.AddComponent<PlayerDrive>();
+        var pso = new SerializedObject(playerCar.GetComponent<CarController>());
+        pso.FindProperty("m_MaximumSteerAngle").floatValue = 22f;
+        pso.FindProperty("m_SteerHelper").floatValue = 0.85f;
+        pso.ApplyModifiedPropertiesWithoutUndo();
         var prc = playerCar.AddComponent<RaceCar>(); prc.driverName = "Гравець"; prc.isPlayer = true;
         carObjects.Add(playerCar);
 
